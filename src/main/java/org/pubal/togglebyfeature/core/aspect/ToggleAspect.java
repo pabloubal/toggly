@@ -13,6 +13,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.Objects;
 
 @Aspect
 @Component
@@ -39,8 +41,15 @@ public class ToggleAspect {
     }
 
     private Object getTargetBeanWithoutSpringProxy(ToggleFallback annotation) throws Throwable {
-        return context.getBeansOfType(annotation.value())
-                .values().stream()
+
+        Map fallbackBeans = context.getBeansOfType(annotation.value());
+
+        if(Objects.isNull(fallbackBeans)){
+            throw new FeatureToggleCantLocateAOPBeanException(ERROR_MESSAGE);
+        }
+
+        return fallbackBeans.values()
+                .stream()
                 .findFirst()
                 .orElseThrow(() -> new FeatureToggleCantLocateAOPBeanException(ERROR_MESSAGE));
     }

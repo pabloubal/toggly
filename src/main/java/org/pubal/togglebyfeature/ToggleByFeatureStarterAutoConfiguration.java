@@ -4,19 +4,22 @@ import org.pubal.togglebyfeature.core.SampleFeatureEnum;
 import org.pubal.togglebyfeature.core.ToggleManager;
 import org.pubal.togglebyfeature.core.config.ConfigBuilder;
 import org.pubal.togglebyfeature.core.config.ToggleConfiguration;
+import org.pubal.togglebyfeature.core.interfaces.IActivationStrategy;
 import org.pubal.togglebyfeature.core.interfaces.IFeatureProvider;
 import org.pubal.togglebyfeature.core.interfaces.IFeatureStateRepository;
 import org.pubal.togglebyfeature.core.interfaces.IToggleManager;
 import org.pubal.togglebyfeature.core.providers.FeatureProvider;
 import org.pubal.togglebyfeature.core.repositories.CloudConfigStateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
-@ComponentScan({"org.pubal.togglebyfeature.core",
-                "org.pubal.togglebyfeature.test"})
+@ComponentScan({"org.pubal.togglebyfeature.core"})
 public class ToggleByFeatureStarterAutoConfiguration {
 
     @Bean
@@ -45,10 +48,13 @@ public class ToggleByFeatureStarterAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(IToggleManager.class)
+
     public IToggleManager defaultToggleManager(ToggleConfiguration toggleConfiguration,
                                                IFeatureStateRepository featureStateRepository,
-                                               IFeatureProvider featureProvider){
-        return new ToggleManager(toggleConfiguration, featureStateRepository, featureProvider);
+                                               IFeatureProvider featureProvider,
+                                               @Autowired(required = false)
+                                               IActivationStrategy[] activationStrategies){
+        return new ToggleManager(toggleConfiguration, featureStateRepository, featureProvider, activationStrategies);
     }
 
 }

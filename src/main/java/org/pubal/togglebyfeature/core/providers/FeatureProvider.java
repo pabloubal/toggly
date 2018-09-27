@@ -40,7 +40,7 @@ public class FeatureProvider implements IFeatureProvider {
     }
 
     @Override
-    public IFeatureState getDefaultFeatureState(String f) {
+    public FeatureState getDefaultFeatureState(String f) {
         return this.defaultFeatureState;
     }
 

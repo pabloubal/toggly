@@ -1,7 +1,9 @@
 package org.pubal.togglebyfeature.core.interfaces;
 
-public interface IFeatureStateRepository {
-    IFeatureState getFeatureState(String featureName);
+import org.pubal.togglebyfeature.core.FeatureState;
 
-    void setFeatureState(IFeatureState fs);
+public interface IFeatureStateRepository {
+    FeatureState getFeatureState(String featureName);
+
+    void setFeatureState(FeatureState fs);
 }

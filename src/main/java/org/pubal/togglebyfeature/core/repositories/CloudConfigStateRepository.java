@@ -1,36 +1,31 @@
 package org.pubal.togglebyfeature.core.repositories;
 
-import org.pubal.togglebyfeature.core.interfaces.IFeature;
+import org.pubal.togglebyfeature.core.FeatureState;
 import org.pubal.togglebyfeature.core.interfaces.IFeatureStateRepository;
-import org.pubal.togglebyfeature.core.interfaces.IFeatureState;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@ConfigurationProperties(prefix = "togglebyfeature")
-//@RefreshScope
+@ConfigurationProperties
+@RefreshScope
 public class CloudConfigStateRepository implements IFeatureStateRepository {
-    private Map<String, IFeatureState> featureStateMap;
+    private Map<String, FeatureState> toggly;
 
     public CloudConfigStateRepository(){
-        this.featureStateMap = new HashMap<>();
+        this.toggly = new ConcurrentHashMap();
     }
 
     @Override
-    public IFeatureState getFeatureState(String featureName) {
-        return this.featureStateMap.get(featureName);
+    public FeatureState getFeatureState(String featureName) {
+        return this.toggly.get(featureName);
     }
 
     @Override
-    public void setFeatureState(IFeatureState fs){
-        this.featureStateMap.put(fs.getFeature().name(), fs);
+    public void setFeatureState(FeatureState fs){
+        this.toggly.put(fs.getFeature(), fs);
     }
 
-    public void setFeatureStateMap(Map<String, IFeatureState> featureStateMap){
-        this.featureStateMap = featureStateMap;
-    }
+    public Map<String, FeatureState> getToggly(){return this.toggly;}
 }

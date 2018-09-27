@@ -2,19 +2,23 @@ package org.pubal.togglebyfeature.core;
 
 import org.pubal.togglebyfeature.core.interfaces.IActivationStrategy;
 import org.pubal.togglebyfeature.core.interfaces.IFeature;
-import org.pubal.togglebyfeature.core.interfaces.IFeatureState;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class FeatureState implements IFeatureState {
-    private IFeature feature;
+public class FeatureState{
+    private String feature;
     private boolean enabled;
-    private IActivationStrategy activationStrategy;
+    private String activationStrategy;
     private Map<String, String> parameters;
 
-    public FeatureState(IFeature feature,
+    public FeatureState(){
+        this.parameters = new ConcurrentHashMap<>();
+    }
+
+    public FeatureState(String feature,
                         boolean enabled,
-                        IActivationStrategy activationStrategy,
+                        String activationStrategy,
                         Map<String, String> parameters){
         this.feature=feature;
         this.enabled=enabled;
@@ -22,23 +26,41 @@ public class FeatureState implements IFeatureState {
         this.parameters=parameters;
     }
 
-    @Override
     public boolean isActive() {
-        return false;
+        return this.enabled;
     }
 
-    @Override
-    public IActivationStrategy getActivationStrategy() {
+    public String getActivationStrategy() {
         return this.activationStrategy;
     }
 
-    @Override
-    public IFeature getFeature() {
+    public String getFeature() {
         return this.feature;
     }
 
-    @Override
     public String getValue(String key) {
         return this.parameters.get(key);
     }
+
+    public void setFeature(String feature){
+        this.feature = feature;
+    }
+
+    public void setEnabled(boolean enabled){
+        this.enabled = enabled;
+    }
+
+    public void setParameters(Map<String, String> parameters){
+        this.parameters = parameters;
+    }
+
+    public Map<String, String> getParameters(){
+        return this.parameters;
+    }
+
+    public void setActivationStrategy(String activationStrategy){
+        this.activationStrategy=activationStrategy;
+    }
+
+
 }
