@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.pubal</groupId>
-	<artifactId>togglebyfeature-spring-starter</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>toggly-spring-starter</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 
-	<name>togglebyfeature</name>
-	<description>Spring boot starter for toggleByFeature project</description>
+	<name>toggly</name>
+	<description>Spring boot starter for toggly project</description>
     <developers>
         <developer>
             <name>Pablo Ubal</name>
@@ -79,6 +79,12 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-context</artifactId>
+            <version>1.1.5.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
             <version>1.1.5.RELEASE</version>
         </dependency>
 
