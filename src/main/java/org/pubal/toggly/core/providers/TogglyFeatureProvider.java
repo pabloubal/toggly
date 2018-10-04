@@ -1,11 +1,8 @@
 package org.pubal.toggly.core.providers;
 
-import com.sun.org.apache.xerces.internal.util.FeatureState;
 import org.pubal.toggly.core.TogglyFeatureState;
 import org.pubal.toggly.core.interfaces.EnabledByDefault;
 import org.pubal.toggly.core.interfaces.IFeatureProvider;
-import org.pubal.toggly.core.interfaces.Toggly;
-import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
 import java.lang.annotation.Annotation;
