@@ -5,7 +5,7 @@
 
 	<groupId>org.toggly</groupId>
 	<artifactId>toggly-spring-starter</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-RELEASE</version>
 
 	<name>toggly</name>
 	<description>Spring boot starter for toggly project</description>
@@ -28,7 +28,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.6.RELEASE</version>
+                <version>1.4.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

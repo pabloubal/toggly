@@ -37,13 +37,13 @@ import java.util.Objects;
 @Component
 @ConditionalOnProperty(name="toggly.endpoints.clustered-refresh.enabled", matchIfMissing = false)
 public class ClusterRefresh extends AbstractEndpoint<List<String>> {
-    private final static String path = "cluster_refresh";
+    private final static String path = "cluster-refresh";
 
     @Value("${toggly.endpoints.clustered-refresh.serviceName}")
     private String serviceName;
 
-    @Value("${toggly.endpoints.clustered-refresh.refreshUrl:/manage/refresh}")
-    private final String refreshURL = "/manage/refresh";
+    @Value("${toggly.endpoints.clustered-refresh.refreshUrl:/refresh}")
+    private String refreshURL;
 
     @Autowired
     private DiscoveryClient discoveryClient;
@@ -74,11 +74,15 @@ public class ClusterRefresh extends AbstractEndpoint<List<String>> {
         if(instances.size() > 0) {
             List<String> finalRefreshedEndpoints = refreshedEndpoints;
             instances.forEach(i -> {
-                String URL = String.format("http://%s:%d%s", i.getHost(), i.getPort(), this.refreshURL);
-                ResponseEntity<List> s = restTemplate.exchange(URL, HttpMethod.POST, null, List.class);
+                try {
+                    String URL = String.format("http://%s:%d%s", i.getHost(), i.getPort(), this.refreshURL);
+                    ResponseEntity<List> s = restTemplate.exchange(URL, HttpMethod.POST, null, List.class);
 
-                if (s.getStatusCode() == HttpStatus.OK) {
-                    finalRefreshedEndpoints.add(i.getHost());
+                    if (s.getStatusCode() == HttpStatus.OK) {
+                        finalRefreshedEndpoints.add(i.getHost());
+                    }
+                }
+                catch(Exception e){
                 }
             });
         }
