@@ -14,7 +14,7 @@ public class FeatureToggleCantLocateAOPBeanException extends Exception {
     /**
      * Default parent constructor
      *
-     * @param message
+     * @param message: Exception message
      */
     public FeatureToggleCantLocateAOPBeanException(String message) {
         super(message);
@@ -23,8 +23,8 @@ public class FeatureToggleCantLocateAOPBeanException extends Exception {
     /**
      * Default parent constructor
      *
-     * @param message
-     * @param cause
+     * @param message: Exception message
+     * @param cause: Exception cause
      */
     public FeatureToggleCantLocateAOPBeanException(String message, Throwable cause) {
         super(message, cause);
@@ -33,7 +33,7 @@ public class FeatureToggleCantLocateAOPBeanException extends Exception {
     /**
      * Default parent constructor
      *
-     * @param cause
+     * @param cause: Exception cause
      */
     public FeatureToggleCantLocateAOPBeanException(Throwable cause) {
         super(cause);

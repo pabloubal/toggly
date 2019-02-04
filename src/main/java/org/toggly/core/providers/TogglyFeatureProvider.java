@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * This implementation maps features to its annotations list in order to provide meta-data access
  *
  * i.e.:
- * @EnabledByDefault => This annotation on a feature determines default feature state.
+ * &#064;EnabledByDefault: This annotation on a feature determines default feature state.
  *
  * @author Pablo Ubal - pablo.ubal@gmail.com
  */

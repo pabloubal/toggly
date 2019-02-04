@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * <p>
  * i.e.
  * public class SampleFeatureEnum {
- *     @EnabledByDefault
+ *     <b>&#064;EnabledByDefault</b>
  *     public static final String SampleFeature="SampleFeature";
  * }
  * </p>

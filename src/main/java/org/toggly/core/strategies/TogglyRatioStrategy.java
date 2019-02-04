@@ -19,9 +19,9 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * i.e.
  * toggly.SampleFeatures.activationStrategy=RatioStrategy
- * toggly.SampleFeatures.parameters.ratio=100 => will always return true
- * toggly.SampleFeatures.parameters.ratio=0 => will always return false
- * toggly.SampleFeatures.parameters.ratio=50 => 50% chances to return true or false
+ * toggly.SampleFeatures.parameters.ratio=100 (will always return true)
+ * toggly.SampleFeatures.parameters.ratio=0 (will always return false)
+ * toggly.SampleFeatures.parameters.ratio=50 (50% chances to return true or false)
  *
  * @author Pablo Ubal - pablo.ubal@gmail.com
  */

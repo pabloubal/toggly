@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Used for identifying Feature classes.
  *
  * i.e.:
- * @TogglyEnum
+ * <b>&#064;TogglyEnum</b>
  * public class SampleFeatureEnum {
  *     public static final String SampleFeature="SampleFeature";
  * }

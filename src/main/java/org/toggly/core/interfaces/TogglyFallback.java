@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
  * Class-level annotation used to identify Fallback class
  *
  * i.e.:
- * @TogglyFallback(TogglyFallbackTest.class)
+ * <b>&#064;TogglyFallback(TogglyFallbackTest.class)</b>
  * public class TogglyTest{
- *     @Toggly(SampleFeatureEnum.SampleFeature)
+ *     &#064;Toggly(SampleFeatureEnum.SampleFeature)
  *     public String testMethod(){
  *         return "Main Method"
  *     }

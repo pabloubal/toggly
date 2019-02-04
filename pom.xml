@@ -7,8 +7,9 @@
     <artifactId>toggly</artifactId>
     <version>0.0.1</version>
 
-    <name>toggly</name>
+    <name>${project.groupId}:${project.artifactId}</name>
     <description>Spring boot starter for toggly project</description>
+    <url>https://pabloubal.github.io/toggly/</url>
     <developers>
         <developer>
             <name>Pablo Ubal</name>
@@ -23,6 +24,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/pabloubal/toggly.git</connection>
+        <developerConnection>scm:git:ssh://github.com:pabloubal/toggly.git</developerConnection>
+        <url>http://github.com/pabloubal/toggly/tree/master</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,6 +134,32 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
